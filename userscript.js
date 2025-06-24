@@ -18,7 +18,8 @@
     let selectedPeriod = "today";
 
     function addAnalyzeButtons() {
-        const rows = document.querySelectorAll(".leaderboard-entry");
+        const rowsContainer = document.querySelector('.divide-y.divide-gray-800');
+        const rows = rowsContainer.children;
 
         const urlParams = new URLSearchParams(window.location.search);
         const periodType = urlParams.get('period_type');
@@ -33,7 +34,7 @@
             selectedPeriod = "today";
         }
 
-        rows.forEach((row) => {
+        Array.from(rows).forEach((row) => {
             if (row.querySelector(".check-btn")) return;
 
             const link = row.querySelector("a");
